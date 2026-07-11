@@ -1,0 +1,8 @@
+# STORM online/dyna Pong runs that freeze only the world model while policy
+# training continues. Real-env eval logs eval_real/*.
+#
+# Scheduler:
+# tiny-exp-scheduler run scripts/experiments/pong_dyna_freeze_wm.commands.txt --cuda-devices 0,1,2,3,4,5,6,7 --logs-dir runs/pong_dyna_freeze_wm/scheduler_logs --verbose --keep-job-tabs
+
+WANDB_PROJECT=storm-dyna-freeze-wm WANDB_ENTITY=ssl-lab WANDB_MODE=online WANDB_ENABLED=1 STORM_SIZE_CONFIG=base python -u train.py --run_name "pong_dyna_freezewm_frac0p5_base" --env_name "PongNoFrameskip-v4" --seed 42 --config_name "atari_visual" --size-config base --ram --save_dataset True --save_eval_dataset True --eval_every_steps 5000 --eval_episodes 5 --eval_metrics_batches 1 --freeze-wm-after-fraction 0.5
+WANDB_PROJECT=storm-dyna-freeze-wm WANDB_ENTITY=ssl-lab WANDB_MODE=online WANDB_ENABLED=1 STORM_SIZE_CONFIG=base python -u train.py --run_name "pong_dyna_freezewm_frac0p75_base" --env_name "PongNoFrameskip-v4" --seed 42 --config_name "atari_visual" --size-config base --ram --save_dataset True --save_eval_dataset True --eval_every_steps 5000 --eval_episodes 5 --eval_metrics_batches 1 --freeze-wm-after-fraction 0.75

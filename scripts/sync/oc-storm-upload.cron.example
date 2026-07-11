@@ -1,0 +1,12 @@
+# Copy the command below into `crontab -e`.
+# Keep tokens outside the repository, for example in:
+#   ~/.config/oc-storm-upload.env
+#
+# Expected private env file:
+#   export TSINGHUA_UPLOAD_URL='https://cloud.tsinghua.edu.cn/...'
+#   export TSINGHUA_REMOTE_DIR='/luyukuan'
+# Optional:
+#   export QUIET_MINUTES=30
+#   export ARCHIVE_DIR=/SSD_RAID0/lyk/oc-storm/archives
+
+*/10 * * * * cd /home/lyk/projects/oc-storm && mkdir -p .sync_state && /bin/bash -lc 'source ~/.config/oc-storm-upload.env && ./scripts/sync/upload_experiments_when_done.sh' >> .sync_state/cron.log 2>&1

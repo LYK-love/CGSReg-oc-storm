@@ -1,0 +1,24 @@
+# Install PyTorch separately with a CUDA build that matches your NVIDIA driver.
+# Example: pip install --index-url https://download.pytorch.org/whl/cu121 torch torchvision torchaudio
+einops
+tensorboard
+tensorboardX
+tqdm
+matplotlib
+gymnasium[atari,accept-rom-license]
+opencv-python
+omegaconf
+hydra-core
+colorama
+wandb
+keyboard
+mss
+# We used python 3.11 and ray 2.53.0
+# Client and server should use the same version of python and ray
+ray==2.53.0
+
+wandb
+pygame
+flask
+flask-socketio
+imageio

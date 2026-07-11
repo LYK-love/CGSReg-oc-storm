@@ -1,0 +1,8 @@
+# STORM/Dreamer-style Pixel RL in real Pong env.
+# Log style and metric names match Dreamer pixel_rl.
+#
+# Total jobs: 1
+# Scheduler:
+# tiny-exp-scheduler run scripts/experiments/pong_pixel_rl_real_env.commands.txt --cuda-devices 0,1,2,3,4,5,6,7 --logs-dir runs/pong_pixel_rl_in_env/scheduler_logs
+
+WANDB_PROJECT=rl-in-pixel-env-storm WANDB_ENTITY=ssl-lab WANDB_MODE=online WANDB_ENABLED=1 PIXEL_RL_AC_UPDATES=20000 PIXEL_RL_ENVS=64 PIXEL_RL_BACKUP_EVERY=15 PIXEL_RL_LOG_EVERY=1000 PIXEL_RL_SAVE_EVERY=10000 PIXEL_RL_RESUME=False bash scripts/experiments/pong_pixel_rl_in_env.sh real '' pong_pixel_rl_in_env/logdir/real_envsteps20m_torch

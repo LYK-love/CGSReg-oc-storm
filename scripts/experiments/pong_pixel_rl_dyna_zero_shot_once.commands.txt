@@ -1,0 +1,9 @@
+# One-shot STORM RL-in-pixel-WM run for dyna-style zero-shot RL check.
+#
+# Uses the original/base-size STORM visual Atari100K Pong reproduction checkpoint:
+#   runs/pong_atari100k_reproduction/logdir/Pong-STORM-base/ckpt/latest_agent.pth
+#
+# Scheduler:
+# tiny-exp-scheduler run scripts/experiments/pong_pixel_rl_dyna_zero_shot_once.commands.txt --cuda-devices auto --logs-dir runs/pong_pixel_rl_in_env/scheduler_logs/dyna_zero_shot_once --verbose --keep-job-tabs
+
+WANDB_PROJECT=rl-in-pixel-env WANDB_ENTITY=ssl-lab WANDB_MODE=online WANDB_ENABLED=1 STORM_SIZE_CONFIG=base PIXEL_RL_CONFIG_PATH=runs/pong_atari100k_reproduction/logdir/Pong-STORM-base/config.py PIXEL_RL_AC_UPDATES=20000 PIXEL_RL_ENVS=64 PIXEL_RL_BACKUP_EVERY=15 PIXEL_RL_LOG_EVERY=1000 PIXEL_RL_SAVE_EVERY=10000 PIXEL_RL_WM_VIDEO_EVERY=10000 PIXEL_RL_WM_HORIZON=512 PIXEL_RL_WM_DISABLE_KV_CACHE=True PIXEL_RL_WM_RESPECT_TERMINAL=True PIXEL_RL_WM_INITIAL_SOURCE=real PIXEL_RL_WM_REWARD_QUANTIZE_THRESHOLD=0.5 PIXEL_RL_EVAL_REAL_EVERY=2000 PIXEL_RL_EVAL_REAL_VIDEO_EVERY=10000 PIXEL_RL_EVAL_REAL_EPS=5 PIXEL_RL_RESUME=False bash scripts/experiments/pong_pixel_rl_in_env.sh wm runs/pong_atari100k_reproduction/logdir/Pong-STORM-base/ckpt/latest_agent.pth pong_pixel_rl_in_env/logdir/backend=wm_wm_family=storm_ckpt=pong_atari100k_repro_base_ac20k_envs64_backup15_horizon512_rewq0p5_reset=real

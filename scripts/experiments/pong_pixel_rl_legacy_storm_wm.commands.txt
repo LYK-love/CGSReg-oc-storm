@@ -1,0 +1,6 @@
+# Legacy STORM RL-in-pixel-env command template.
+# Replace the checkpoint path with a legacy STORM world_model_*.pth checkpoint.
+#
+# tiny-exp-scheduler run scripts/experiments/pong_pixel_rl_legacy_storm_wm.commands.txt --cuda-devices auto --logs-dir runs/pong_pixel_rl_in_env/scheduler_logs
+
+WANDB_PROJECT=rl-in-pixel-env-storm WANDB_ENTITY=ssl-lab WANDB_MODE=online WANDB_ENABLED=1 PIXEL_RL_AC_UPDATES=20000 PIXEL_RL_ENVS=64 PIXEL_RL_BACKUP_EVERY=15 PIXEL_RL_WM_HORIZON=512 PIXEL_RL_RESUME=False bash scripts/experiments/pong_pixel_rl_in_env.sh wm ckpt/<run_name>/world_model_<step>.pth pong_pixel_rl_in_env/logdir/backend=wm_wm_family=storm_legacy_ckpt=<stable-id>_ac20k_envs64_backup15_horizon512_rewq0p5_reset=real
